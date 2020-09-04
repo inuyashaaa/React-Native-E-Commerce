@@ -14,25 +14,32 @@ class SelectSizeComponent extends Component {
   }
 
   render() {
-    const { sizeValue, isActive, onPress } = this.props
+    const { color = Colors.primaryBlue, isActive, onPress } = this.props
 
     return (
       <TouchableOpacity
-        onPress={() => onPress(sizeValue)}
+        onPress={() => onPress(color)}
       >
         <View style={{
           width: 48 / 375 * width,
           height: 48 / 375 * width,
           borderRadius: 24 / 375 * width,
-          backgroundColor: Colors.backgroundWhite,
+          marginRight: 16 / 375 * width,
+          backgroundColor: color,
           justifyContent: 'center',
           alignItems: 'center',
-          borderWidth: StyleSheet.hairlineWidth,
-          borderColor: isActive ? Colors.primaryBlue : Colors.neutralLight,
-          marginRight: 16 / 375 * width,
         }}
         >
-          <Text style={{ ...TextStyles.heading5, color: Colors.neutralDark }}>{sizeValue}</Text>
+          {
+            isActive ? <View style={{
+              width: 16,
+              height: 16,
+              borderRadius: 8,
+              backgroundColor: Colors.backgroundWhite,
+            }}
+            /> : null
+          }
+
         </View>
       </TouchableOpacity>
     )
